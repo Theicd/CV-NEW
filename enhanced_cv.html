@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>יניב דרור — יועץ AI וארכיטקט מערכות</title>
+  <style>
+    /* תמיכה בדפדפנים ישנים */
+    :root {
+      --bg: #0b0e14;
+      --surface: #151a28;
+      --text: #e6e6e6;
+      --muted: #a1a1aa;
+      --accent: #4dabf7;
+      --border: #22283a;
+    }
+    
+    /* פוליפיל ל-CSS Variables בדפדפנים ישנים */
+    @supports not (--css: variables) {
+      body { 
+        background: #0b0e14;
+        color: #e6e6e6;
+      }
+      .panel {
+        background: #151a28;
+        border-color: #22283a;
+      }
+      .chips li {
+        background: #0f1424;
+        border-color: #22283a;
+      }
+      .proj {
+        background: #101629;
+        border-color: #22283a;
+      }
+      .muted {
+        color: #a1a1aa;
+      }
+      a.btn {
+        background: #0f1424;
+        border-color: #22283a;
+      }
+    }
+    
+    /* אנימציות עם נפילה אחורה לדפדפנים ישנים */
+    @keyframes fadeIn {
+      from { opacity: 0; -webkit-transform: translateY(10px); transform: translateY(10px); }
+      to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+    }
+    
+    @-webkit-keyframes fadeIn {
+      from { opacity: 0; -webkit-transform: translateY(10px); }
+      to { opacity: 1; -webkit-transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { -webkit-transform: scale(1); transform: scale(1); }
+      50% { -webkit-transform: scale(1.03); transform: scale(1.03); }
+      100% { -webkit-transform: scale(1); transform: scale(1); }
+    }
+    
+    @-webkit-keyframes pulse {
+      0% { -webkit-transform: scale(1); }
+      50% { -webkit-transform: scale(1.03); }
+      100% { -webkit-transform: scale(1); }
+    }
+    
+    body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,Helvetica,sans-serif;line-height:1.6;margin:0}
+    .wrap{max-width:920px;margin:0 auto;padding:28px 18px 60px}
+    h1{margin:0 0 4px;font-size:28px;animation: fadeIn 0.6s ease-out;}
+    .subtitle{color:var(--muted);animation: fadeIn 0.8s ease-out;}
+    .panel{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:16px;
+      margin:18px 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: fadeIn 0.5s ease-out;
+    }
+    .panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:8px 0 0;list-style:none}
+    .chips li{
+      background:#0f1424;
+      border:1px solid var(--border);
+      padding:6px 10px;
+      border-radius:14px;
+      font-size:13px;
+      transition: all 0.2s ease;
+    }
+    .chips li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    .proj{
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:12px;
+      background:#101629;
+      transition: all 0.2s ease;
+    }
+    .proj:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .proj h3{margin:0 0 6px;font-size:18px}
+    .muted{color:var(--muted)}
+    a.btn{
+      display:inline-block;
+      background:#0f1424;
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:6px 10px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:13px;
+      transition: all 0.2s ease;
+    }
+    a.btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-1px);
+    }
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    
+    @media (max-width:768px){.two{grid-template-columns:1fr}}
+    @media print{
+      body{background:#fff;color:#000}
+      .panel,.proj{background:#fff;border:1px solid #ddd}
+      * { animation: none !important; }
+    }
+    
+    /* אנימציות ספציפיות */
+    .panel:nth-child(odd) { animation-delay: 0.1s; }
+    .panel:nth-child(even) { animation-delay: 0.2s; }
+    
+    /* אנימציה לתגיות מיומנויות */
+    .chips li { animation: fadeIn 0.4s ease-out; }
+    .chips li:nth-child(1) { animation-delay: 0.1s; }
+    .chips li:nth-child(2) { animation-delay: 0.2s; }
+    .chips li:nth-child(3) { animation-delay: 0.3s; }
+    .chips li:nth-child(4) { animation-delay: 0.4s; }
+    .chips li:nth-child(5) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="panel">
+      <h1>יניב דרור</h1>
+      <div class="subtitle">יועץ AI | ארכיטקט מערכות | מפתח Front‑End/Low‑Code | מומחה אינטגרציות</div>
+      <ul class="chips">
+        <li>📩 Dror201031@Gmail.com</li>
+        <li>📞 052‑5732457</li>
+        <li>📍 באר יעקב</li>
+        <li>🔗 linkedin.com/in/yourprofile</li>
+      </ul>
+    </header>
+
+    <section class="panel">
+      <h2>פרופיל מקצועי</h2>
+      <p>
+        ארכיטקט פתרונות ויועץ AI עם התמחות בבניית ממשקי משתמש מתקדמים, אינטגרציות API, ותהליכי אוטומציה חכמים.
+        מתרגם רעיונות למוצרים עובדים במהירות, תוך שימוש במודלים וכלים קיימים, כתיבת פרומפטים מתקדמת, ועבודה יעילה עם
+        כותבי קוד וכלי עזר (Code Assistants) כדי לקצר זמני פיתוח ולהקטין סיכונים.
+      </p>
+      <ul>
+        <li>התמקדות ב-Orchestration של מודלים קיימים (OpenAI / Gemini / Stable Diffusion / Hugging Face) — לא אימון מודלים מאפס.</li>
+        <li>פיתוח Front‑End חזק (Three.js/WebGL/JS) + אינטגרציות שרת קלות (Python/Node) לפי צורך.</li>
+        <li>ניהול מוצר קצה-לקצה: אפיון, UX, MVP, הטמעה, הדרכה.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>מסלולי תפקיד מועדפים</h2>
+      <ul class="chips">
+        <li>יועץ AI</li>
+        <li>ארכיטקט פתרונות</li>
+        <li>מוביל הטמעה והדרכה</li>
+        <li>מפתח אינטגרציות</li>
+        <li>Front‑End תלת‑ממד</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>כלים וטכנולוגיות</h2>
+      <div class="two">
+        <div>
+          <h3>AI & ML</h3>
+          <ul class="chips">
+            <li class="ai">Prompt Engineering</li>
+            <li class="ai">OpenAI API</li>
+            <li class="ai">Google Gemini</li>
+            <li class="ai">Hugging Face</li>
+            <li class="ai">Stable Diffusion</li>
+            <li class="ai">Computer Vision</li>
+          </ul>
+          
+          <h3>Frontend</h3>
+          <ul class="chips">
+            <li class="frontend">Three.js</li>
+            <li class="frontend">WebGL</li>
+            <li class="frontend">JavaScript (ES6+)</li>
+            <li class="frontend">React</li>
+            <li class="frontend">HTML5/CSS3</li>
+            <li class="frontend">Responsive Design</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3>Backend & DevOps</h3>
+          <ul class="chips">
+            <li class="backend">Node.js</li>
+            <li class="backend">Python</li>
+            <li class="backend">RESTful APIs</li>
+            <li class="backend">Git</li>
+            <li class="backend">Docker</li>
+            <li class="backend">Firebase</li>
+          </ul>
+          
+          <h3>כלים נוספים</h3>
+          <ul class="chips">
+            <li class="tools">Figma</li>
+            <li class="tools">Adobe Creative Cloud</li>
+            <li class="tools">VS Code</li>
+            <li class="tools">Jupyter</li>
+            <li class="tools">Low-Code</li>
+          </ul>
+        </div>
+      </div>
+      
+      <style>
+        .chips li.ai { background: #2e3b4e; border-color: #4dabf7; }
+        .chips li.frontend { background: #2e4e3b; border-color: #4caf50; }
+        .chips li.backend { background: #4e2e3b; border-color: #e91e63; }
+        .chips li.tools { background: #3b3b4e; border-color: #9c27b0; }
+      </style>
+    </section>
+
+    <section class="panel">
+      <h2>פרויקטים נבחרים</h2>
+      <div class="grid">
+        <article class="proj">
+          <h3>GAMMA3N — ממשק שליטה למודל שפה מקומי</h3>
+          <p class="muted">UI מתקדם, שליטה פרמטרית, היסטוריית שיחות, עבודה מקומית ללא ענן.</p>
+          <a class="btn" href="https://youtu.be/zK0MEXqo75U" target="_blank" rel="noopener">סרטון הדגמה</a>
+        </article>
+        <article class="proj">
+          <h3>@Genie — עוזר AI בוואטסאפ (אינטגרציה מקומית)</h3>
+          <p class="muted">חיבור מודל מקומי ל-WhatsApp, עבודה מלאה על מחשב אישי, 3 מצבי שימוש.</p>
+          <a class="btn" href="https://theicd.github.io/Genie-Helper-Ai/" target="_blank" rel="noopener">דף מוצר</a>
+        </article>
+        <article class="proj">
+          <h3>Effect‑Cube — הפיכת תמונות לווידאו תלת‑ממדי</h3>
+          <p class="muted">ממשק תלת‑ממדי אינטראקטיבי (Three.js/WebGL), ייצוא וידאו ישירות מהדפדפן.</p>
+          <a class="btn" href="https://theicd.github.io/Effect-Cube/index3d.html" target="_blank" rel="noopener">צפה בפרויקט</a>
+        </article>
+        <article class="proj">
+          <h3>Dreamy AI Toons — יצירת דמויות מצוירות</h3>
+          <p class="muted">UI אינטראקטיבי, שילוב OpenAI API, מודל שימוש חינמי עם מפתח אישי או קרדיטים.</p>
+          <a class="btn" href="https://theicd.github.io/DreamyAIToons/" target="_blank" rel="noopener">צפה בפרויקט</a>
+        </article>
+        <article class="proj">
+          <h3>PIXEL‑ISR — חיפוש מדיה עם תרגום אוטומטי</h3>
+          <p class="muted">עברית→אנגלית→תוצאות רלוונטיות, Pixabay API, ממשק מהיר לשיתוף.</p>
+          <a class="btn" href="https://theicd.github.io/PIXEL-ISR/" target="_blank" rel="noopener">צפה בפרויקט</a>
+        </article>
+        <article class="proj">
+          <h3>המורה הדיגיטלי — Google Gemini</h3>
+          <p class="muted">מורה פרטי חינמי, תמיכה במדיה, שמירת היסטוריה והתאמות מתקדמות.</p>
+          <a class="btn" href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">השגת API</a>
+        </article>
+        <article class="proj">
+          <h3>Captain Story — סוכן AI ליצירת סיפורי ילדים</h3>
+          <p class="muted">בניית שלד עלילה, דמויות וגרפיקה; תוצרים לדוגמה וסרטונים.</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=bh22GWArSb0" target="_blank" rel="noopener">הדגמה</a>
+        </article>
+        <article class="proj">
+          <h3>Auto Clip Generator — יצירת קליפים אוטומטית</h3>
+          <p class="muted">עריכה אוטומטית מתמונה/וידאו, חיתוכים, טקסטים, לוגו; ממשק מקומי.</p>
+        </article>
+        <article class="proj">
+          <h3>SKYNET — אוטומציית מסחר (MQL5)</h3>
+          <p class="muted">פיתוח רובוטי מסחר, ניהול שרתים מרובי ליבות ואופטימיזציה.</p>
+          <a class="btn" href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">פרופיל MQL5</a>
+        </article>
+        <article class="proj">
+          <h3>Organic Smart Garden — מערכות גידול חכמות</h3>
+          <p class="muted">ראייה ממוחשבת לזיהוי מזיקים, אוטומציה של תאורה והשקיה, הדגמות וידאו.</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=0L_H2eNVt9Y" target="_blank" rel="noopener">צפה</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>הישגים בולטים</h2>
+      <div class="two">
+        <div>
+          <h3>פיתוח מוצרים</h3>
+          <ul class="achievement-list">
+            <li>🚀 פיתוח 10+ פרויקטי AI מ-2019 ועד היום</li>
+            <li>⏱️ מסירת פרויקטים בלוחות זמנים קצרים</li>
+            <li>🎯 פיתוח פתרונות מותאמים אישית ללקוחות</li>
+          </ul>
+        </div>
+        <div>
+          <h3>הוראה והדרכה</h3>
+          <ul class="achievement-list">
+            <li>👨‍🏫 הדרכת עשרות תלמידים בקורס AI מעשי</li>
+            <li>⭐ דירוג גבוה מהמשתתפים</li>
+            <li>🎤 הרצאות והדרכות בתחום ה-AI</li>
+          </ul>
+        </div>
+      </div>
+      <style>
+        .achievement-list {
+          list-style: none;
+          padding: 0;
+          margin: 10px 0 0 0;
+        }
+        .achievement-list li {
+          margin: 8px 0;
+          padding-right: 10px;
+          position: relative;
+        }
+        .achievement-list li:before {
+          content: "•";
+          color: #4dabf7;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-right: 5px;
+        }
+      </style>
+    </section>
+
+    <section class="panel">
+      <h2>תעודות והסמכות</h2>
+      <ul class="chips">
+        <li>Google Cloud AI Fundamentals</li>
+        <li>Prompt Engineering Advanced - DeepLearning.AI</li>
+        <li>Three.js Mastery Certification</li>
+      </ul>
+    </section>
+
+    <section class="panel two">
+      <div>
+        <h2>הדרכה והכשרות — קורס AI פרונטלי</h2>
+        <p>
+          פיתוח והעברת קורס "יצירת קסם דיגיטלי" — 4 מפגשים (3 שעות כל אחד).
+          למידה ידידותית: הדגמות חיות, תרגול מעשי, ליווי בפרויקט אישי.
+        </p>
+        <ul>
+          <li>טקסט מאסטר: יצירת תוכן, מסמכים, תסריטים, ולומדות.</li>
+          <li>קסם ויזואלי: תמונות, וידאו, סאונד, דמויות מדברות, עריכת קליפים.</li>
+          <li>בונים חוויות: אתרים/אפליקציות/משחקים בכלי Low‑Code.</li>
+          <li>פרויקט גמר: ליווי מצמוד מרעיון לתוצר סופי.</li>
+        </ul>
+        <a class="btn" href="https://theicd.github.io/my-landing-page/index11.html" target="_blank" rel="noopener">דף הקורס</a>
+      </div>
+      <div>
+        <h2>איך אני עובד בפועל</h2>
+        <ul>
+          <li>Orchestration: חיבור ושילוב מודלים/שירותים קיימים.</li>
+          <li>Prompt/Tool Design: כתיבת פרומפטים, כללי מערכת, ותכנון זרימות.</li>
+          <li>פיתוח UI/UX מהיר והקמת MVP.</li>
+          <li>עבודה עם כותבי קוד/Code Assistants להגברת קצב והקטנת שגיאות.</li>
+          <li>תיעוד, הדרכה והטמעה אצל לקוחות.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel two">
+      <div>
+        <h2>ניסיון תעסוקתי תמציתי</h2>
+        <ul>
+          <li><strong>יועץ AI עצמאי</strong> (2020–2025): אפיון, בניית MVPs, אינטגרציות, והטמעות.</li>
+          <li><strong>מפתח Full‑Stack/Front‑End</strong> (2015–הווה): פרויקטים אינטראקטיביים עתירי מדיה.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>השכלה</h2>
+        <ul>
+          <li>BA בניהול מערכות מידע — המרכז האקדמי פרס.</li>
+          <li>קורסים מתקדמים עצמאיים ב‑AI, Computer Vision, ו‑Web.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="panel">
+      <div class="muted">עודכן: ספטמבר 2025 • גרסה תמציתית להדפסה ושיתוף</div>
+    </footer>
+  </div>
+</body>
+</html>
