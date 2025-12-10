@@ -718,66 +718,13 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
     const toggleAll = (open) => document.querySelectorAll('details').forEach(d => d.open = open);
     window.addEventListener('beforeprint', () => toggleAll(true));
     window.addEventListener('afterprint', () => toggleAll(false));
-    // טעינת כרטיסי פרויקטים מקבצים חיצוניים
+    // טעינת כרטיסי פרויקטים
     document.addEventListener('DOMContentLoaded', async () => {
-      const projects = [
-        'projects/project_gamma3n_interface.html',
-        'projects/auto-clip-generator.html',
-        'projects/project_genie.html',
-        'projects/project_whatsapp_extension.html',
-        'projects/project_browser_extension.html',
-        'projects/project_gamma3n_chat.html',
-        'projects/project_art_gen.html', 
-        'projects/project_ai_course.html', 
-        'projects/captain-story.html', 
-        'projects/dreamy-ai-toons.html', 
-        'projects/project_pixel_isr.html', 
-        'projects/project_google_digital_teacher.html', 
-        'projects/effect-cube.html', 
-        'projects/organic-smart-garden.html'
-      ];
-      const categoryMap = {
-        'projects/effect-cube.html': 'tool',
-        'projects/project_pixel_isr.html': 'tool',
-        'projects/project_google_digital_teacher.html': 'tool',
-        'projects/dreamy-ai-toons.html': 'tool',
-        'projects/project_genie.html': 'product',
-        'projects/project_ai_course.html': 'product',
-        'projects/project_art_gen.html': 'project',
-        'projects/project_gamma3n_interface.html': 'project',
-        'projects/auto-clip-generator.html': 'tool',
-        'projects/organic-smart-garden.html': 'project',
-        'projects/captain-story.html': 'project',
-        'projects/project_gamma3n_chat.html': 'project',
-        'projects/project_browser_extension.html': 'project',
-        'projects/project_whatsapp_extension.html': 'project'
-      };
       const host = document.getElementById('projects-list');
       const fallback = document.getElementById('projects-fallback');
-      const useFallback = location.protocol === 'file:';
-      if (useFallback) {
-        host.innerHTML = fallback.innerHTML;
-      } else {
-        for (const url of projects) {
-          try {
-            const res = await fetch(url);
-            if (!res.ok) throw new Error(`fetch failed for ${url}`);
-            const html = await res.text();
-            const tmp = document.createElement('div');
-            tmp.innerHTML = html;
-            const cat = categoryMap[url] || 'project';
-            tmp.querySelectorAll('details.card').forEach(d => d.setAttribute('data-category', cat));
-            host.append(...tmp.childNodes);
-          } catch(e) {
-            console.error(`Error loading project file: ${e.message}`);
-          }
-        }
-        
-        // אם לא נטענו פרויקטים בכלל, השתמש בגיבוי המקומי
-        if (host.children.length === 0) {
-          host.innerHTML = fallback.innerHTML;
-        }
-      }
+      
+      // טען את הפרויקטים מה-fallback (כל הפרויקטים כבר מוגדרים בתוך ה-HTML)
+      host.innerHTML = fallback.innerHTML;
 
       // הוספת קטגוריות תחתונות: כלים ופלטפורמות + מילות מפתח (ATS)
       const extraHost = document.getElementById('extra-categories');
